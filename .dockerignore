@@ -1,0 +1,32 @@
+# Entornos virtuales locales (Se reinstalan limpios dentro de Docker)
+venv/
+.venv/
+env/
+
+# Archivos de variables de entorno (Por seguridad)
+.env
+.env.*
+
+# Git
+.git/
+.gitignore
+
+# Caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configuración de editores (VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+
+# Archivos temporales del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Documentación y archivos Docker (No se necesitan dentro del contenedor)
+README.md
+Dockerfile
+docker-compose.yml
+.dockerignore

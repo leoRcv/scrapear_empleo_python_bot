@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # Servicio de Base de Datos PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-vacantes_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-postgres} -d $${POSTGRES_DB:-vacantes_db}"]
+      interval: 3s
+      timeout: 3s
+      retries: 5
+
+  # Servicio del Scraper en Python
+  scraper:
+    build: .
+    container_name: python_scraper
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # 'db' apunta automáticamente al contenedor de PostgreSQL
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      DB_NAME: ${DB_NAME:-vacantes_db}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID}
+    restart: "no"
+
+volumes:
+  postgres_data:

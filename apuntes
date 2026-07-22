@@ -1,0 +1,13 @@
+# --- 2. PORTALES DE LINKEDIN POR PAÍS ---
+    # Usamos '%22' para envolver "web scraping" en comillas y 'OR' para buscar cualquiera de los dos perfiles
+    #%20 es para espacio
+    terminos_busqueda = "%22web%20scraping%22%20OR%20automatizacion"
+    
+    paises_busqueda = [
+        {"nombre": "Paraguay", "url": f"https://www.linkedin.com/jobs/search?keywords={terminos_busqueda}&location=Paraguay"},
+        {"nombre": "España", "url": f"https://www.linkedin.com/jobs/search?keywords={terminos_busqueda}&location=Spain"},
+        {"nombre": "México", "url": f"https://www.linkedin.com/jobs/search?keywords={terminos_busqueda}&location=Mexico"},
+        {"nombre": "Argentina", "url": f"https://www.linkedin.com/jobs/search?keywords={terminos_busqueda}&location=Argentina"},
+        {"nombre": "Colombia", "url": f"https://www.linkedin.com/jobs/search?keywords={terminos_busqueda}&location=Colombia"},
+        {"nombre": "Chile", "url": f"https://www.linkedin.com/jobs/search?keywords={terminos_busqueda}&location=Chile"}
+    ]
