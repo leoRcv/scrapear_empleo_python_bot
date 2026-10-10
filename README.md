@@ -1,9 +1,9 @@
-🤖 Extractor de ofertas de empleo y notificador de Telegram (backend en Docker)
+Extractor de ofertas de empleo y notificador de Telegram (backend en Docker)
 Un sistema automatizado de extracción de datos (Web Scraping) de grado de producción diseñado para monitorear ofertas de empleo orientadas al perfil Python, enfocado exclusivamente en mercados hispanohablantes (Paraguay, España, México, Argentina, Colombia y Chile). El sistema almacena las vacantes en una base de datos relacional para evitar duplicados y envía notificaciones en tiempo real mediante un bot de Telegram.
 
 Todo el entorno está 100% contenerizado con Docker, lo que garantiza su ejecución perfecta en cualquier sistema operativo sin necesidad de instalar dependencias locales complejas.
 
-🚀 Arquitectura del Proyecto
+Arquitectura del Proyecto
 Este proyecto está diseñado bajo una arquitectura modular y asíncrona:
 
 Infraestructura Contenerizada: Utiliza Docker y Docker Compose para orquestar dos servicios: una base de datos persistente y el script extractor. El contenedor de Python aprovecha la caché de capas de Docker para compilaciones ultrarrápidas y se cierra automáticamente al finalizar su tarea para no consumir recursos (RAM/CPU) en estado de reposo.
@@ -16,7 +16,7 @@ Almacenamiento (Persistencia): Conectado a un contenedor dedicado de PostgreSQL 
 
 Notificaciones (API): Conexión nativa con la API de Telegram. Agrupa los mensajes en lotes (batching) para respetar los límites de la plataforma (rate limits).
 
-🛠️ Tecnologías Utilizadas (Tech Stack)
+Tecnologías Utilizadas (Tech Stack)
 Infraestructura: Docker, Docker Compose
 
 Lenguaje: Python 3.10+ (Programación Asíncrona / Asyncio)
@@ -27,10 +27,10 @@ Base de Datos: PostgreSQL 15 (Docker Image), SQLAlchemy (ORM), psycopg2-binary
 
 Integraciones: Telegram Bot API, python-dotenv
 
-⚠️ Nota sobre Mantenimiento (Disclaimer)
+Nota sobre Mantenimiento (Disclaimer)
 Importante: Este proyecto fue construido y probado con éxito en 2026. Las plataformas digitales (especialmente LinkedIn) actualizan frecuentemente sus estructuras de HTML, selectores CSS y políticas anti-scraping. Si en el futuro el script reporta 0 resultados en la extracción, la arquitectura del software (Base de datos en Docker, Filtros y Notificaciones) continuará intacta; solo se requerirá actualizar los selectores CSS dentro del módulo extractor de la plataforma afectada.
 
-⚙️ Requisitos Previos
+Requisitos Previos
 Ya no es necesario instalar Python ni PostgreSQL en tu máquina local. Solo necesitas:
 
 Escritorio Dockerinstalado y en ejecución.
@@ -39,7 +39,7 @@ Una cuenta de Telegram (Token de un Bot creado con BotFather y tu Chat ID).
 
 Git para clonar el repositorio.
 
-💻 Instalación y Despliegue
+Instalación y Despliegue
 1. Clonar el repositorio:
 
 Intento
@@ -66,7 +66,7 @@ Intento
 docker compose up --build
 Verás en la consola cómo la base de datos se inicializa y luego el scraper comienza a buscar vacantes. Cuando termine, el contenedor del scraper mostrará exited with code 0 y recibirás los mensajes en tu Telegram.
 
-▶️ Ejecuciones Posteriores
+Ejecuciones Posteriores
 Una vez construida la imagen, ejecutar el scraper diariamente es instantáneo. Tienes dos opciones:
 
 Opción A (Mediante Docker Desktop):
@@ -77,7 +77,7 @@ Ve a la pestaña Containers.
 
 Despliega el grupo de tu proyecto.
 
-Presiona el botón de Play (▶️ Start) junto al contenedor python_scraper.
+Presiona el botón de Play (Start) junto al contenedor python_scraper.
 
 Opción B (Mediante Terminal):
 Simplemente ejecuta el comando sin la bandera de construcción:
